@@ -1,0 +1,27 @@
+//SPDX-License-Identifier: MIT  
+
+// the above sets the license of the contract this must be set in order to compile and deploy your contract
+//it can be Unlicensed also.
+
+pragma solidity ^0.8.7;    ///solidity version used it means from 0.8.7 upwards.
+
+import  "@openzeppelin/contracts/token/ERC20/ERC20.sol";   
+/////we are importing the ERC20 openzeppelin contract above 
+
+contract OleanjiTwitterToken  is ERC20("OleanjiTwitterToken", "OTT") {
+    // since we need some functions from the contract we imported then 
+    /// we inherit it using the 'is' keyword and we supply the name there. 
+    //Mine is a twitter token you can change the name. and the symbol
+
+    address owner;
+    // im setting the owner of the tokens => Me 
+    constructor(uint totalSupply){
+        //when deploying we supply the amount of tokens we want
+        uint amount = totalSupply * 10 ** 18;
+        // then we give it the decimals required.
+        owner = msg.sender;
+        //setting the sender's address of the contract => My Address
+       _mint(owner, amount);
+       // then we sent thetokens to my address
+    }
+}
